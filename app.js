@@ -3,8 +3,9 @@ let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 let db = "";
+const app = express();
 // Express Route
-const kritikRoute = require('./api/student.route');
+const kritikRoute = require('./api.kritik.route');
 const creatorRoute = require('./api/creator.route');
 const contentRoute = require('./api/content.route');
 
@@ -23,13 +24,13 @@ mongoose.connect(db, {
 
 
 
-const app = express();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cors());
-app.use('/kritik', studentRoute)
+app.use('/kritik', kritikRoute)
 app.use('/creator', creatorRoute)
 app.use('/content', contenRoute)
 
